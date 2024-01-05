@@ -12,7 +12,7 @@ export const CardMenuSection = ({label, children, ...props}) => {
     }
 
     return (
-        <li className="flex shrink-0 flex-col justify-center border-t border-grey-200 text-[1.1rem] font-semibold tracking-wide text-grey-600 first-of-type:border-t-0 dark:border-grey-900 dark:text-grey-600" role="separator" {...props}>
+        <li className="flex shrink-0 flex-col justify-center border-t border-grey-200 text-[11px] font-semibold tracking-wide text-grey-600 first-of-type:border-t-0 dark:border-grey-900 dark:text-grey-600" role="separator" {...props}>
             <span
                 className="flex items-center justify-between px-4 pb-2 pt-3 uppercase"
                 data-card-menu-section="label"
@@ -22,7 +22,7 @@ export const CardMenuSection = ({label, children, ...props}) => {
                     <ExternalLinkIcon className="-m-1 h-6 w-6 cursor-pointer p-1 transition-all hover:text-green-600" />
                 </a>}
             </span>
-            <ul className="md:grid md:gap-y-[.2rem] md:px-2" role="menu">
+            <ul className="md:grid md:gap-y-[2px] md:px-2" role="menu">
                 {children}
             </ul>
         </li>
@@ -49,7 +49,7 @@ export const CardMenuItem = ({label, shortcut, desc, isSelected, scrollToItem, o
         <li className="mb-0" role="presentation">
             <button
                 ref={buttonRef}
-                className={`group flex w-full cursor-pointer flex-row items-center gap-3 border border-transparent px-2 py-[.6rem] text-left text-grey-800 hover:bg-grey-100 md:rounded dark:hover:bg-grey-900  ${isSelected ? 'bg-grey-100 dark:bg-grey-900' : ''}`}
+                className={`group flex w-full cursor-pointer flex-row items-center gap-3 border border-transparent px-2 py-[6px] text-left text-grey-800 hover:bg-grey-100 md:rounded dark:hover:bg-grey-900  ${isSelected ? 'bg-grey-100 dark:bg-grey-900' : ''}`}
                 data-kg-card-menu-item={label}
                 data-kg-cardmenu-selected={isSelected}
                 role="menuitem"
@@ -59,11 +59,11 @@ export const CardMenuItem = ({label, shortcut, desc, isSelected, scrollToItem, o
                 {...props}
             >
                 <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded bg-white text-grey-900 dark:bg-transparent dark:text-grey-500">
-                    <Icon className="h-[1.8rem] w-[1.8rem]" />
+                    <Icon className="h-[18px] w-[18px]" />
                 </div>
                 <div className="flex w-full justify-between">
-                    <div className="m-0 truncate text-[1.35rem] font-medium leading-snug tracking-[.02rem] text-grey-900 dark:text-grey-200">{label}</div>
-                    <div className="invisible m-0 truncate text-[1.35rem] font-medium leading-snug tracking-[.02rem] text-grey-500 group-hover:visible dark:text-grey-200">{shortcut}</div>
+                    <div className="m-0 truncate text-[13.5px] font-medium leading-snug tracking-[0.2px] text-grey-900 dark:text-grey-200">{label}</div>
+                    <div className="invisible m-0 truncate text-[13.5px] font-medium leading-snug tracking-[0.2px] text-grey-500 group-hover:visible dark:text-grey-200">{shortcut}</div>
                 </div>
             </button>
         </li>
@@ -102,13 +102,13 @@ export const CardSnippetItem = ({label, isSelected, scrollToItem, Icon, onRemove
                 {...props}
             >
                 <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded bg-white text-grey-900 dark:bg-transparent dark:text-grey-500">
-                    <Icon className="h-[1.8rem] w-[1.8rem]" />
+                    <Icon className="h-[18px] w-[18px]" />
                 </div>
-                <div className="m-0 ml-4 truncate text-[1.35rem] font-medium leading-snug tracking-[.02rem] text-grey-900 dark:text-grey-200">{label}</div>
+                <div className="m-0 ml-4 truncate text-[13.5px] font-medium leading-snug tracking-[0.2px] text-grey-900 dark:text-grey-200">{label}</div>
                 {
                     !!onRemove && (
                         <button className="ml-auto cursor-pointer rounded p-[4px] hover:bg-grey-200 group-hover:block dark:hover:bg-grey-950" title="Remove snippet" type="button" onClick={handleSnippetRemove}>
-                            <TrashCardIcon className="h-[1.8rem] w-[1.8rem] stroke-red text-red" />
+                            <TrashCardIcon className="h-[18px] w-[18px] stroke-red text-red" />
                         </button>
                     )
                 }

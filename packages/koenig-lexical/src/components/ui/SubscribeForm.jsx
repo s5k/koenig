@@ -17,9 +17,9 @@ export function SubscribeForm({dataTestId, placeholder, value, buttonSize, butto
             <input
                 className={clsx(
                     'relative w-full bg-white px-4 py-2 font-sans font-normal text-grey-900 focus-visible:outline-none',
-                    buttonSize === 'small' && 'h-10 text-md leading-[4rem]',
-                    buttonSize === 'medium' && 'h-11 text-[1.6rem] leading-[4.4rem]',
-                    buttonSize === 'large' && 'h-12 text-lg leading-[4.8rem]',
+                    buttonSize === 'small' && 'h-10 text-md leading-[40px]',
+                    buttonSize === 'medium' && 'h-11 text-[16px] leading-[44px]',
+                    buttonSize === 'large' && 'h-12 text-lg leading-[48px]',
                 )}
                 defaultValue={value}
                 placeholder={placeholder}

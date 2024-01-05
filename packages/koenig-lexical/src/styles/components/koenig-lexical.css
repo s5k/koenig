@@ -5,7 +5,7 @@
 /* everything is nested here to keep it scoped to our container */
 .koenig-lexical {
     > * {
-        font-size: 1.7rem;
+        font-size: 17px;
         font-weight: 400;
         letter-spacing: 0.1px;
         color: var(--grey-900);
@@ -65,7 +65,7 @@
     font-size: 0;
 
     > * {
-        font-size: 1.4rem;
+        font-size: 14px;
     }
 }
 
@@ -107,7 +107,7 @@ em-emoji-picker {
   /* HTML card */
 
   .koenig-lexical .js-embed-placeholder {
-    margin: .4rem 0!important;
+    margin: 4px 0!important;
     color: var(--grey-700) !important;
   }
 
@@ -152,10 +152,10 @@ em-emoji-picker {
 
 /* Table */
 .koenig-lexical table {
-    font-size: 1.75rem;
+    font-size: 17.5px;
     margin: 0;
     font-family: georgia,Times,serif;
-    letter-spacing: .02rem;
+    letter-spacing: 0.2px;
     line-height: 1.6em;
 }
 

@@ -31,9 +31,9 @@ export function Button({color, dataTestId, href, size, width, rounded, value, pl
             <span
                 className={clsx(
                     'block',
-                    size === 'small' && 'h-10 px-5 text-md leading-[4rem] md:h-10',
-                    size === 'medium' && 'h-11 px-5 text-[1.6rem] leading-[4.4rem]',
-                    size === 'large' && 'h-12 px-6 text-lg leading-[4.8rem]'
+                    size === 'small' && 'h-10 px-5 text-md leading-[40px] md:h-10',
+                    size === 'medium' && 'h-11 px-5 text-[16px] leading-[44px]',
+                    size === 'large' && 'h-12 px-6 text-lg leading-[48px]'
                 )}
                 data-testid={`${dataTestId}-span`}
             >
