@@ -110,7 +110,7 @@ export function MultiSelectDropdown({placeholder = '', items = [], availableItem
                 {selectedItems.map(item => (
                     <button
                         key={item.name}
-                        className="flex cursor-pointer items-center rounded-sm bg-black px-[1rem] py-[.6rem] leading-none text-white dark:bg-grey-100 dark:text-grey-900"
+                        className="flex cursor-pointer items-center rounded-sm bg-black px-[10px] py-[6px] leading-none text-white dark:bg-grey-100 dark:text-grey-900"
                         data-testid="multiselect-dropdown-selected"
                         type="button"
                         onMouseDownCapture={event => handleDeselect(event, item)}
@@ -123,7 +123,7 @@ export function MultiSelectDropdown({placeholder = '', items = [], availableItem
                 <div className="flex-1">
                     <input
                         ref={inputRef}
-                        className="h-full w-full min-w-[5rem] appearance-none bg-transparent px-0 leading-none outline-none"
+                        className="h-full w-full min-w-[50px] appearance-none bg-transparent px-0 leading-none outline-none"
                         placeholder={selectedItems.length === 0 ? placeholder : ''}
                         value={filter}
                         onBlur={handleBlur}

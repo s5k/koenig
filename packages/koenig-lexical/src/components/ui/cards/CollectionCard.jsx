@@ -49,7 +49,7 @@ function PostTitle({title, layout, columns}) {
             (layout === 'grid' && columns === 1) && 'lg:text-3xl xl:text-4xl',
             (layout === 'grid' && columns === 2) && 'md:text-xl lg:text-2xl',
             (layout === 'grid' && columns === 3) && 'md:text-xl',
-            (layout === 'grid' && columns === 4) && 'md:text-xl xl:text-[1.7rem]',
+            (layout === 'grid' && columns === 4) && 'md:text-xl xl:text-[17px]',
         )}>
             {title}
         </div>
@@ -60,9 +60,9 @@ function PostExcerpt({excerpt, layout, columns}) {
     return (
         <div className={clsx(
             'mt-3 line-clamp-2 max-h-[42px] overflow-y-hidden text-md font-normal leading-snug tracking-[-.01em] text-grey-900 dark:text-grey-600',
-            layout === 'list' && 'md:line-clamp-3 md:max-h-[66px] md:text-[1.6rem]',
-            (layout === 'grid' && columns === 1) && 'md:line-clamp-3 md:max-h-[66px] md:text-[1.6rem] lg:mt-4 lg:line-clamp-3 lg:max-h-[75px] lg:text-lg',
-            (layout === 'grid' && columns === 2) && 'lg:mt-4 lg:line-clamp-3 lg:max-h-[66px] lg:text-[1.6rem]'
+            layout === 'list' && 'md:line-clamp-3 md:max-h-[66px] md:text-[16px]',
+            (layout === 'grid' && columns === 1) && 'md:line-clamp-3 md:max-h-[66px] md:text-[16px] lg:mt-4 lg:line-clamp-3 lg:max-h-[75px] lg:text-lg',
+            (layout === 'grid' && columns === 2) && 'lg:mt-4 lg:line-clamp-3 lg:max-h-[66px] lg:text-[16px]'
         )}>
             {excerpt}
         </div>
@@ -72,10 +72,10 @@ function PostExcerpt({excerpt, layout, columns}) {
 function PostMeta({publishDate, readTime, layout, columns}) {
     return (
         <div className={clsx(
-            'mt-3 flex text-[1.25rem] font-medium leading-snug text-grey-600 dark:text-grey-400',
-            layout === 'list' && 'mt-3 md:text-[1.3rem]',
-            (layout === 'grid' && columns === 1) && 'md:text-[1.3rem] lg:mt-4 lg:text-sm',
-            (layout === 'grid' && columns === 2) && 'lg:mt-4 lg:text-[1.3rem]',
+            'mt-3 flex text-[12.5px] font-medium leading-snug text-grey-600 dark:text-grey-400',
+            layout === 'list' && 'mt-3 md:text-[13px]',
+            (layout === 'grid' && columns === 1) && 'md:text-[13px] lg:mt-4 lg:text-sm',
+            (layout === 'grid' && columns === 2) && 'lg:mt-4 lg:text-[13px]',
         )}>
             {publishDate ?
                 (<div>{DateTime.fromISO(publishDate).toFormat('d LLL yyyy')}</div>)
@@ -114,15 +114,15 @@ export function CollectionPost({
                         layout === 'list' && 'mt-0 lg:h-5 lg:w-3/4',
                         (layout === 'grid' && columns === 1) && 'mt-1 md:mt-2 md:h-5 lg:mt-3 lg:h-8',
                         (layout === 'grid' && columns === 2) && 'mt-1 lg:mt-2 lg:h-5',
-                        (layout === 'grid' && columns === 4) && 'mt-1 xl:mt-0 xl:h-[1.4rem]',
+                        (layout === 'grid' && columns === 4) && 'mt-1 xl:mt-0 xl:h-[14px]',
                         isLoading && 'animate-pulse'
                     )}></div>
                     <div className={clsx(
-                        'mt-[1rem] h-4  w-1/2 rounded-full bg-grey-200',
+                        'mt-[10px] h-4  w-1/2 rounded-full bg-grey-200',
                         layout === 'list' && 'lg:mt-3 lg:h-5 lg:w-1/3',
                         (layout === 'grid' && columns === 1) && 'md:mt-3 md:h-5 lg:mt-3 lg:h-8',
                         (layout === 'grid' && columns === 2) && 'lg:mt-3 lg:h-5',
-                        (layout === 'grid' && columns === 4) && 'xl:mt-2 xl:h-[1.4rem]',
+                        (layout === 'grid' && columns === 4) && 'xl:mt-2 xl:h-[14px]',
                         isLoading && 'animate-pulse'
                     )}></div>
                 </div>

@@ -32,11 +32,11 @@ export function SettingsPanel({children, darkMode, cardWidth}) {
 
 export function ToggleSetting({label, description, isChecked, onChange, dataTestId}) {
     return (
-        <div className="mt-2 flex min-h-[3rem] w-full items-center justify-between text-[1.3rem] first:mt-0">
+        <div className="mt-2 flex min-h-[30px] w-full items-center justify-between text-[13px] first:mt-0">
             <div>
                 <div className="font-bold text-grey-900 dark:text-grey-300">{label}</div>
                 {description &&
-                    <p className="w-11/12 text-[1.25rem] font-normal leading-snug text-grey-700">{description}</p>
+                    <p className="w-11/12 text-[12.5px] font-normal leading-snug text-grey-700">{description}</p>
                 }
             </div>
             <div className="flex shrink-0 pl-2">
@@ -49,13 +49,13 @@ export function ToggleSetting({label, description, isChecked, onChange, dataTest
 export function SliderSetting({label, onChange, max, min, value, defaultValue, description, dataTestId}) {
     return (
         <div className="my-2 flex w-full flex-col gap-1">
-            <div className="flex items-center justify-between font-sans text-[1.3rem] font-normal">
+            <div className="flex items-center justify-between font-sans text-[13px] font-normal">
                 <div className="font-bold text-grey-900 dark:text-grey-200">{label}</div>
                 <div className="text-grey-900 dark:text-grey-100" data-testid={`${dataTestId}-value`}>{value}</div>
             </div>
             <Slider dataTestId={dataTestId} defaultValue={defaultValue} max={max} min={min} value={value} onChange={onChange} />
             {description &&
-                <p className="mt-1 text-[1.25rem] font-normal leading-snug text-grey-700">{description}</p>
+                <p className="mt-1 text-[12.5px] font-normal leading-snug text-grey-700">{description}</p>
             }
         </div>
     );
@@ -63,11 +63,11 @@ export function SliderSetting({label, onChange, max, min, value, defaultValue, d
 
 export function InputSetting({label, hideLabel, description, onChange, value, placeholder, dataTestId, onBlur}) {
     return (
-        <div className="mt-2 flex w-full flex-col justify-between gap-2 text-[1.3rem] first:mt-0">
+        <div className="mt-2 flex w-full flex-col justify-between gap-2 text-[13px] first:mt-0">
             <div className={hideLabel ? 'sr-only' : 'font-bold text-grey-900 dark:text-grey-200'}>{label}</div>
             <Input dataTestId={dataTestId} placeholder={placeholder} value={value} onBlur={onBlur} onChange={onChange} />
             {description &&
-                <p className="text-[1.25rem] font-normal leading-snug text-grey-700">{description}</p>
+                <p className="text-[12.5px] font-normal leading-snug text-grey-700">{description}</p>
             }
         </div>
     );
@@ -115,11 +115,11 @@ export function InputUrlSetting({dataTestId, label, value, onChange}) {
  */
 export function InputListSetting({dataTestId, description, label, listOptions, onChange, placeholder, value}) {
     return (
-        <div className="mt-2 flex w-full flex-col justify-between gap-2 text-[1.3rem] first:mt-0">
+        <div className="mt-2 flex w-full flex-col justify-between gap-2 text-[13px] first:mt-0">
             <div className="font-bold text-grey-900 dark:text-grey-200">{label}</div>
             <InputList dataTestId={dataTestId} listOptions={listOptions} placeholder={placeholder} value={value} onChange={onChange} />
             {description &&
-                    <p className="text-[1.25rem] font-normal leading-snug text-grey-700">{description}</p>
+                    <p className="text-[12.5px] font-normal leading-snug text-grey-700">{description}</p>
             }
         </div>
     );
@@ -127,7 +127,7 @@ export function InputListSetting({dataTestId, description, label, listOptions, o
 
 export function DropdownSetting({label, description, value, menu, onChange, dataTestId}) {
     return (
-        <div className="mt-2 flex w-full flex-col justify-between gap-2 text-[1.3rem] first:mt-0">
+        <div className="mt-2 flex w-full flex-col justify-between gap-2 text-[13px] first:mt-0">
             <div className="font-bold text-grey-900 dark:text-grey-200" data-testid={`${dataTestId}-label`}>{label}</div>
             <Dropdown
                 dataTestId={dataTestId}
@@ -136,7 +136,7 @@ export function DropdownSetting({label, description, value, menu, onChange, data
                 onChange={onChange}
             />
             {description &&
-                    <p className="text-[1.25rem] font-normal leading-snug text-grey-700">{description}</p>
+                    <p className="text-[12.5px] font-normal leading-snug text-grey-700">{description}</p>
             }
         </div>
     );
@@ -152,7 +152,7 @@ export function DropdownSetting({label, description, value, menu, onChange, data
  */
 export function MultiSelectDropdownSetting({label, description, placeholder = '', items, availableItems, onChange, dataTestId, allowAdd = true}) {
     return (
-        <div className="mt-2 flex w-full flex-col justify-between gap-2 text-[1.3rem] first:mt-0">
+        <div className="mt-2 flex w-full flex-col justify-between gap-2 text-[13px] first:mt-0">
             <div className="font-bold text-grey-900 dark:text-grey-200">{label}</div>
             <MultiSelectDropdown
                 allowAdd={allowAdd}
@@ -163,7 +163,7 @@ export function MultiSelectDropdownSetting({label, description, placeholder = ''
                 onChange={onChange}
             />
             {description &&
-                    <p className="text-[1.25rem] font-normal leading-snug text-grey-700">{description}</p>
+                    <p className="text-[12.5px] font-normal leading-snug text-grey-700">{description}</p>
             }
         </div>
     );
@@ -171,7 +171,7 @@ export function MultiSelectDropdownSetting({label, description, placeholder = ''
 
 export function ButtonGroupSetting({label, onClick, selectedName, buttons}) {
     return (
-        <div className="mt-2 flex w-full items-center justify-between text-[1.3rem] first:mt-0">
+        <div className="mt-2 flex w-full items-center justify-between text-[13px] first:mt-0">
             <div className="font-bold text-grey-900 dark:text-grey-200">{label}</div>
 
             <div className="shrink-0 pl-2">
@@ -183,7 +183,7 @@ export function ButtonGroupSetting({label, onClick, selectedName, buttons}) {
 
 export function ColorOptionSetting({label, onClick, selectedName, buttons, layout, dataTestId}) {
     return (
-        <div className={`mt-2 flex w-full text-[1.3rem] first:mt-0 ${layout === 'stacked' ? 'flex-col' : 'items-center justify-between'}`} data-testid={dataTestId}>
+        <div className={`mt-2 flex w-full text-[13px] first:mt-0 ${layout === 'stacked' ? 'flex-col' : 'items-center justify-between'}`} data-testid={dataTestId}>
             <div className="font-bold text-grey-900 dark:text-grey-200">{label}</div>
 
             <div className={`shrink-0 ${layout === 'stacked' ? '-mx-1 pt-1' : 'pl-2'}`}>
@@ -218,7 +218,7 @@ export function ColorPickerSetting({label, isExpanded, onSwatchChange, onPickerC
 
     return (
         <div className="mt-2 flex-col" data-testid={dataTestId} onClick={markClickedInside}>
-            <div className="flex w-full items-center justify-between text-[1.3rem] first:mt-0">
+            <div className="flex w-full items-center justify-between text-[13px] first:mt-0">
                 <div className="font-bold text-grey-900 dark:text-grey-200">{label}</div>
 
                 <div className="shrink-0 pl-2">
@@ -238,7 +238,7 @@ export function ColorPickerSetting({label, isExpanded, onSwatchChange, onPickerC
 
 export function MediaUploadSetting({className, label, hideLabel, onFileChange, isDraggedOver, placeholderRef, src, alt, isLoading, errors = [], progress, onRemoveMedia, icon, desc = '', size, borderStyle, mimeTypes, isPinturaEnabled, openImageEditor, setFileInputRef}) {
     return (
-        <div className={clsx('mt-2 text-[1.3rem] first:mt-0', className)} data-testid="media-upload-setting">
+        <div className={clsx('mt-2 text-[13px] first:mt-0', className)} data-testid="media-upload-setting">
             <div className={hideLabel ? 'sr-only' : 'font-bold text-grey-900 dark:text-grey-200'}>{label}</div>
 
             <MediaUploader

@@ -32,7 +32,7 @@ export function IconButton({dataTestId, onClick, label, name, selectedName, Icon
         <li className="mb-0">
             <button
                 aria-label={label}
-                className={`m-[3px] flex h-7 w-8 cursor-pointer items-center justify-center ${isActive ? 'rounded bg-white text-black shadow-sm dark:bg-grey-900 dark:text-white' : 'text-grey-700 dark:text-white' } ${Icon || 'text-[1.3rem] font-bold'}`}
+                className={`m-[3px] flex h-7 w-8 cursor-pointer items-center justify-center ${isActive ? 'rounded bg-white text-black shadow-sm dark:bg-grey-900 dark:text-white' : 'text-grey-700 dark:text-white' } ${Icon || 'text-[13px] font-bold'}`}
                 data-testid={dataTestId}
                 type="button"
                 onClick={handleClick}

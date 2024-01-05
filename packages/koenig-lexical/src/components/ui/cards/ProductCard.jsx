@@ -82,7 +82,7 @@ export function ProductCard({
                                 hasSettingsPanel={true}
                                 initialEditor={descriptionEditor}
                                 initialEditorState={descriptionEditorInitialState}
-                                placeholderClassName="!text-[1.6rem] !font-sans !font-normal !tracking-tight !leading-snug text-grey-700 opacity-50"
+                                placeholderClassName="!text-[16px] !font-sans !font-normal !tracking-tight !leading-snug text-grey-700 opacity-50"
                                 placeholderText="Description"
                                 textClassName="koenig-lexical-subheading subheading-xsmall whitespace-normal text-grey-700"
                             />

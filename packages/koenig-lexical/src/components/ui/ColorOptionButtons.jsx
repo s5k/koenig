@@ -17,7 +17,7 @@ export function ColorOptionButtons({buttons = [], selectedName, onClick}) {
                             onClick={onClick}
                         />
                         :
-                        <li key='background-image' className={`flex h-[3rem] w-[3rem] cursor-pointer items-center justify-center rounded-full border-2 ${selectedName === name ? 'border-green' : 'border-transparent'}`} data-testid="background-image-color-button" type="button" onClick={() => onClick(name)}>
+                        <li key='background-image' className={`flex h-[30px] w-[30px] cursor-pointer items-center justify-center rounded-full border-2 ${selectedName === name ? 'border-green' : 'border-transparent'}`} data-testid="background-image-color-button" type="button" onClick={() => onClick(name)}>
                             <span className="border-1 flex h-6 w-6 items-center justify-center rounded-full border border-black/5">
                                 <PlusIcon className="h-3 w-3 stroke-grey-700 stroke-2 dark:stroke-grey-500 dark:group-hover:stroke-grey-100" />
                             </span>
@@ -37,7 +37,7 @@ export function ColorButton({onClick, label, name, color, selectedName}) {
         <li>
             <button
                 aria-label={label}
-                className={`flex h-[2.6rem] w-[2.6rem] cursor-pointer items-center justify-center rounded-full border-2 ${isActive ? 'border-green' : 'border-transparent'}`}
+                className={`flex h-[26px] w-[26px] cursor-pointer items-center justify-center rounded-full border-2 ${isActive ? 'border-green' : 'border-transparent'}`}
                 data-test-id={`color-picker-${name}`}
                 type="button"
                 onClick={handleClick}

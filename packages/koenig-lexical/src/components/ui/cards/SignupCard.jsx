@@ -251,10 +251,10 @@ export function SignupCard({alignment,
                         className={clsx(
                             'mx-auto flex w-full flex-1 flex-col justify-center',
                             (alignment === 'center') && 'items-center',
-                            (layout === 'regular') && 'p-[4rem] sm:py-[6rem] md:px-[6rem] md:py-[8rem] lg:px-[8rem]',
-                            (layout === 'wide') && 'max-w-[740px] p-[4rem] sm:py-[6rem] md:px-[8rem] md:py-[10rem] lg:px-0',
-                            (layout === 'full') && 'px-[calc(32px-(4rem/2))] py-[4rem] xs:px-[calc(92px-(8rem/2))] sm:py-[6rem] md:px-[calc(92px-(12rem/2))] md:py-[12rem] lg:px-0 lg:py-[14rem] xl:py-[18rem]',
-                            (layout === 'split') && 'p-[4rem] sm:py-[6rem] md:px-[6rem] md:py-[12rem] lg:px-[8rem] lg:py-[16rem] xl:py-[18rem]',
+                            (layout === 'regular') && 'p-[40px] sm:py-[60px] md:px-[60px] md:py-[80px] lg:px-[80px]',
+                            (layout === 'wide') && 'max-w-[740px] p-[40px] sm:py-[60px] md:px-[80px] md:py-[100px] lg:px-0',
+                            (layout === 'full') && 'px-[calc(32px-(4rem/2))] py-[40px] xs:px-[calc(92px-(8rem/2))] sm:py-[60px] md:px-[calc(92px-(12rem/2))] md:py-[120px] lg:px-0 lg:py-[140px] xl:py-[180px]',
+                            (layout === 'split') && 'p-[40px] sm:py-[60px] md:px-[60px] md:py-[120px] lg:px-[80px] lg:py-[160px] xl:py-[180px]',
                             (!isSwapped && layout === 'split' && correctedBackgroundSize === 'contain') && 'px-[calc(32px-(4rem/2))] xs:px-[calc(92px-(8rem/2))] sm:px-[calc(92px-(12rem/2))] md:pr-[calc(92px-(12rem/2))] lg:pr-0',
                             (isSwapped && layout === 'split' && correctedBackgroundSize === 'contain') && 'px-[calc(32px-(4rem/2))] xs:px-[calc(92px-(8rem/2))] sm:px-[calc(92px-(12rem/2))] md:pl-[calc(92px-(12rem/2))] lg:pl-0',
                         )}>
@@ -300,8 +300,8 @@ export function SignupCard({alignment,
                                 '!font-medium !leading-snug !tracking-tight opacity-60',
                                 (alignment === 'center') && 'text-center',
                                 (layout === 'regular') && 'text-lg sm:text-xl',
-                                (layout === 'wide' || layout === 'split') && 'text-lg sm:text-xl md:text-[2.2rem]',
-                                layout === 'full' && 'text-lg sm:text-xl md:text-[2.2rem] lg:text-2xl xl:max-w-[880px]',
+                                (layout === 'wide' || layout === 'split') && 'text-lg sm:text-xl md:text-[22px]',
+                                layout === 'full' && 'text-lg sm:text-xl md:text-[22px] lg:text-2xl xl:max-w-[880px]',
                             )}
                             placeholderText={subheaderPlaceholder}
                             singleParagraph={true}
@@ -339,7 +339,7 @@ export function SignupCard({alignment,
                             initialEditor={disclaimerTextEditor}
                             initialEditorState={disclaimerTextEditorInitialState}
                             nodes="minimal"
-                            placeholderClassName={`opacity-60 !leading-snug !font-normal !text-[1.6rem] !tracking-tight`}
+                            placeholderClassName={`opacity-60 !leading-snug !font-normal !text-[16px] !tracking-tight`}
                             placeholderText={disclaimerPlaceholder}
                             singleParagraph={true}
                             style={{color: matchingTextColor(backgroundColor)}}
@@ -413,7 +413,7 @@ export function SignupCard({alignment,
                                             setButtonColorPickerExpanded(false);
                                         }}
                                     >
-                                        <ImgBgIcon className="h-[1.4rem] w-[1.4rem]" />
+                                        <ImgBgIcon className="h-[14px] w-[14px]" />
                                     </button>
                                 )
                             }),
