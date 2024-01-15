@@ -1,3 +1,4 @@
+import {$generateHtmlFromNodes} from '@lexical/html';
 import '../styles/index.css';
 import DragDropPastePlugin from '../plugins/DragDropPastePlugin';
 import DragDropReorderPlugin from '../plugins/DragDropReorderPlugin';
@@ -53,14 +54,17 @@ const KoenigComposableEditor = ({
     const isDragReorderEnabled = isDragEnabled && !readOnly && !isNested;
 
     const {onChange: sharedOnChange} = useSharedOnChangeContext();
-    const _onChange = React.useCallback((editorState) => {
+    const _onChange = React.useCallback((editorState, editor) => {
         if (sharedOnChange) {
             // sharedOnChange is called for the main editor and nested editors, we want to
             // make sure we don't accidentally serialize only the contents of the nested
             // editor so we need to use the parent editor when it exists
             const primaryEditorState = (editor._parentEditor || editor).getEditorState();
             const json = primaryEditorState.toJSON();
-            sharedOnChange(json);
+            editor.update(() => {
+                const html = $generateHtmlFromNodes(editor, null);
+                sharedOnChange(json, html);
+            });
         }
 
         if (onChange) {
