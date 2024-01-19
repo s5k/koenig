@@ -1,6 +1,6 @@
 {
   "name": "@s5k/koenig-lexical",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "repository": "https://github.com/s5k/koenig/tree/master/packages/koenig-lexical",
   "author": "Ghost Foundation",
   "license": "MIT",
@@ -16,7 +16,8 @@
     ".": {
       "import": "./dist/koenig-lexical.js",
       "require": "./dist/koenig-lexical.umd.js"
-    }
+    },
+    "./assets/styles.css": "./dist/index.css"
   },
   "scripts": {
     "dev": "concurrently \"vite --host\" \"yarn build --watch\" \"yarn preview -l silent --host\" \"yarn workspace @tryghost/kg-default-nodes dev\"",
@@ -122,7 +123,6 @@
     "tailwindcss": "3.4.0",
     "typescript": "5.3.3",
     "vite": "4.3.8",
-    "vite-plugin-libcss": "^1.1.1",
     "vite-plugin-svgr": "^4.0.0",
     "vitest": "1.1.2",
     "y-websocket": "^1.5.0",
