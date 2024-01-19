@@ -1,4 +1,5 @@
 import 'dotenv/config';
+import libCss from 'vite-plugin-libcss';
 import pkg from './package.json';
 import react from '@vitejs/plugin-react';
 import svgr from 'vite-plugin-svgr';
@@ -15,7 +16,8 @@ export default (function viteConfig({mode}) {
 
     const plugins = [
         svgr(),
-        react()
+        react(),
+        libCss()
     ];
 
     // Keep sentryVitePlugin as the last plugin
