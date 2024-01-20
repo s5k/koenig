@@ -17,7 +17,6 @@
             blockquote,
             aside
         ):not(:where(.not-kg-prose, [class~='not-kg-prose'] *)) {
-            margin: 16px 0 0;
             min-width: 100%;
             max-width: 100%;
         }
@@ -167,12 +166,6 @@
         /* Heading 2 */
 
         :where(
-            h1 + h2
-        ):not(:where(.not-kg-prose, [class~='not-kg-prose'] *)) {
-            margin: 16px 0 0;
-        }
-
-        :where(
             h2 + h2,
             h3 + h2,
             h4 + h2,
@@ -312,7 +305,7 @@
             font-family: georgia,Times,serif;
             font-weight: 400;
             line-height: 1.6em;
-            font-size: 20px;
+            font-size: 16px;
         }
 
         :where(
@@ -344,16 +337,6 @@
             h6 + p
         ):not(:where(.not-kg-prose, [class~='not-kg-prose'] *)) {
             margin: 08px 0 0;
-        }
-
-        :where(
-            p + p,
-            blockquote + p,
-            aside + p,
-            ul + p,
-            ol + p
-        ):not(:where(.not-kg-prose, [class~='not-kg-prose'] *)) {
-            margin: 32px 0 0;
         }
 
         /*  Cards can be addressed by their wrapper div element */
@@ -397,7 +380,6 @@
             ul,
             ol
         ):not(:where(.not-kg-prose, [class~='not-kg-prose'] *)) {
-            margin: 16px 0 0;
             padding: 0;
             min-width: 100%;
             max-width: 100%;
@@ -578,14 +560,6 @@
             margin: 4px 0 0;
         }
 
-        :where(
-            p + blockquote,
-            blockquote + blockquote
-        ):not(:where(.not-kg-prose, [class~='not-kg-prose'] *)) {
-            margin: 32px 0 0;
-        }
-
-
         /* Cards can be selected by their wrapper div element */
         :where(
             div + blockquote
@@ -606,7 +580,6 @@
         :where(
             aside
         ):not(:where(.not-kg-prose, [class~='not-kg-prose'] *)) {
-            margin: 32px 0 0;
             padding: 10px 60px 12.5px;
             font-style: italic;
             text-align: center;
@@ -628,13 +601,6 @@
             h6 + aside
         ):not(:where(.not-kg-prose, [class~='not-kg-prose'] *)) {
             margin: 4px 0 0;
-        }
-
-        :where(
-            p + aside,
-            blockquote + aside
-        ):not(:where(.not-kg-prose, [class~='not-kg-prose'] *)) {
-            margin: 32px 0 0;
         }
 
         @media (max-width: 800px) {

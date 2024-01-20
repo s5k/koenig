@@ -10,7 +10,7 @@
     "**/node_modules/**"
   ],
   "scripts": {
-    "dev": "yarn workspace @tryghost/koenig-lexical dev",
+    "dev": "yarn workspace @s5k/koenig-lexical dev",
     "prepare": "husky install .github/hooks",
     "presetup": "yarn",
     "setup": "yarn && lerna run build",
