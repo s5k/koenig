@@ -23,15 +23,16 @@ export default function usePinturaEditor({
         }
 
         try {
-            const url = new URL(jsUrl);
-            const importUrl = `${url.protocol}//${url.host}${url.pathname}`;
-            const importScriptPromise = import(/* @vite-ignore */ importUrl);
+            // @TODO: figure out how to load the script from the CDN, currently it has an issue when compiled with Vite
+            // const url = new URL(jsUrl);
+            // const importUrl = `${url.protocol}//${url.host}${url.pathname}`;
+            // const importScriptPromise = import(/* @vite-ignore */ importUrl);
 
-            importScriptPromise.then(() => {
-                setScriptLoaded(true);
-            }).catch(() => {
-                // log script loading failure
-            });
+            // importScriptPromise.then(() => {
+            //     setScriptLoaded(true);
+            // }).catch(() => {
+            //     // log script loading failure
+            // });
         } catch (e) {
             // Log script loading error
         }
