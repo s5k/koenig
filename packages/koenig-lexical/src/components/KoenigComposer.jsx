@@ -88,7 +88,7 @@ const KoenigComposer = ({
 
         const provider = new WebsocketProvider(
             multiplayerEndpoint,
-            multiplayerDocId + '/' + id,
+            multiplayerDocId,
             doc,
             {connect: false}
         );
@@ -96,7 +96,7 @@ const KoenigComposer = ({
         if (multiplayerDebug) {
             provider.on('status', (event) => {
                 // eslint-disable-next-line no-console
-                console.log(event.status, `id: ${multiplayerDocId}/${id}`); // logs "connected" or "disconnected"
+                console.log(event.status, `id: ${multiplayerDocId}`); // logs "connected" or "disconnected"
             });
         }
 

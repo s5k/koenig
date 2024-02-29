@@ -27,7 +27,8 @@ import {useSnippets} from './utils/useSnippets';
 
 const url = new URL(window.location.href);
 const params = new URLSearchParams(url.search);
-const WEBSOCKET_ENDPOINT = params.get('multiplayerEndpoint') || 'ws://localhost:1234';
+const WEBSOCKET_ENDPOINT = params.get('multiplayerEndpoint') || 'ws://localhost:3000/yjs';
+// const WEBSOCKET_ENDPOINT = params.get('multiplayerEndpoint') || 'ws://free.blr2.piesocket.com/v3/1?api_key=HIXCCt6eq6ZOR1sS7yKTXYmWyivjZK9csvYFoF57';
 const WEBSOCKET_ID = params.get('multiplayerId') || '0';
 
 const cardConfig = {
@@ -107,6 +108,8 @@ function DemoEditor({editorType, registerAPI, cursorDidExitAtTop, darkMode, setW
 }
 
 function DemoComposer({editorType, isMultiplayer, setWordCount, setTKCount}) {
+    console.log('isMultiplayer', isMultiplayer);
+    console.log('editorType', editorType);
     const [searchParams, setSearchParams] = useSearchParams();
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const [sidebarView, setSidebarView] = useState('json');
@@ -121,6 +124,8 @@ function DemoComposer({editorType, isMultiplayer, setWordCount, setTKCount}) {
     const defaultContent = React.useMemo(() => {
         return JSON.stringify(getDefaultContent({editorType}));
     }, [editorType]);
+
+    console.log('defaultContent', defaultContent);
 
     const initialContent = React.useMemo(() => {
         if (isMultiplayer) {
@@ -252,7 +257,7 @@ function DemoComposer({editorType, isMultiplayer, setWordCount, setTKCount}) {
             fileUploader={{useFileUpload: useFileUpload({isMultiplayer}), fileTypes}}
             initialEditorState={initialContent}
             isTKEnabled={true} // TODO: can we move this onto <KoenigEditor>?
-            multiplayerDocId={`demo/${WEBSOCKET_ID}`}
+            multiplayerDocId={`roomOne`}
             multiplayerEndpoint={WEBSOCKET_ENDPOINT}
             nodes={getAllowedNodes({editorType})}
         >
@@ -311,7 +316,7 @@ function DemoApp({editorType, isMultiplayer}) {
 
             <MemoizedDemoComposer
                 editorType={editorType}
-                isMultiplayer={isMultiplayer}
+                isMultiplayer={true}
                 setTKCount={setTKCount}
                 setWordCount={setWordCount}
             />
