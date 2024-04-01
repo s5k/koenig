@@ -11,7 +11,7 @@ import content from './content/content.json';
 import minimalContent from './content/minimal-content.json';
 import {$getRoot, $isDecoratorNode} from 'lexical';
 import {
-    BASIC_NODES, BASIC_TRANSFORMERS, KoenigComposableEditor,
+    BASIC_NODES, BASIC_TRANSFORMERS, ImagePlugin, KoenigComposableEditor,
     KoenigComposer, KoenigEditor, MINIMAL_NODES, MINIMAL_TRANSFORMERS,
     RestrictContentPlugin,
     TKCountPlugin,
@@ -76,7 +76,9 @@ function DemoEditor({editorType, registerAPI, cursorDidExitAtTop, darkMode, setW
                 cursorDidExitAtTop={cursorDidExitAtTop}
                 markdownTransformers={BASIC_TRANSFORMERS}
                 registerAPI={registerAPI}
+                isShowNavToolbar
             >
+                <ImagePlugin />
                 <WordCountPlugin onChange={setWordCount} />
             </KoenigComposableEditor>
         );

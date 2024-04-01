@@ -1,4 +1,3 @@
-import {$generateHtmlFromNodes} from '@lexical/html';
 import '../styles/index.css';
 import DragDropPastePlugin from '../plugins/DragDropPastePlugin';
 import DragDropReorderPlugin from '../plugins/DragDropReorderPlugin';
@@ -8,8 +7,10 @@ import KoenigComposerContext from '../context/KoenigComposerContext';
 import KoenigErrorBoundary from './KoenigErrorBoundary';
 import MarkdownPastePlugin from '../plugins/MarkdownPastePlugin.jsx';
 import MarkdownShortcutPlugin from '../plugins/MarkdownShortcutPlugin';
+import NavToolbar from './NavToolbar.jsx';
 import React from 'react';
 import TKPlugin from '../plugins/TKPlugin.jsx';
+import {$generateHtmlFromNodes} from '@lexical/html';
 import {ContentEditable} from '@lexical/react/LexicalContentEditable';
 import {EditorPlaceholder} from './ui/EditorPlaceholder';
 import {ExternalControlPlugin} from '../plugins/ExternalControlPlugin';
@@ -42,38 +43,46 @@ const KoenigComposableEditor = ({
     isDragEnabled = true,
     inheritStyles = false,
     isSnippetsEnabled = true,
+    isShowNavToolbar = false,
     hiddenFormats = [],
     dataTestId
 }) => {
     const {historyState} = useSharedHistoryContext();
     const [editor] = useLexicalComposerContext();
     const {isCollabActive} = useCollaborationContext();
-    const {editorContainerRef, darkMode, isTKEnabled} = React.useContext(KoenigComposerContext);
+    const {editorContainerRef, darkMode, isTKEnabled} = React.useContext(
+        KoenigComposerContext,
+    );
 
     const isNested = !!editor._parentEditor;
     const isDragReorderEnabled = isDragEnabled && !readOnly && !isNested;
 
     const {onChange: sharedOnChange} = useSharedOnChangeContext();
-    const _onChange = React.useCallback((editorState, editor) => {
-        if (sharedOnChange) {
-            // sharedOnChange is called for the main editor and nested editors, we want to
-            // make sure we don't accidentally serialize only the contents of the nested
-            // editor so we need to use the parent editor when it exists
-            const primaryEditorState = (editor._parentEditor || editor).getEditorState();
-            const json = primaryEditorState.toJSON();
-            editor.update(() => {
-                const html = $generateHtmlFromNodes(editor, null);
-                sharedOnChange(json, html);
-            });
-        }
+    const _onChange = React.useCallback(
+        (editorState, editor) => {
+            if (sharedOnChange) {
+                // sharedOnChange is called for the main editor and nested editors, we want to
+                // make sure we don't accidentally serialize only the contents of the nested
+                // editor so we need to use the parent editor when it exists
+                const primaryEditorState = (
+                    editor._parentEditor || editor
+                ).getEditorState();
+                const json = primaryEditorState.toJSON();
+                editor.update(() => {
+                    const html = $generateHtmlFromNodes(editor, null);
+                    sharedOnChange(json, html);
+                });
+            }
 
-        if (onChange) {
-            // onChange is only called for this current editor instance, allowing for
-            // per-editor onChange handlers
-            const json = editorState.toJSON();
-            onChange(json);
-        }
-    }, [onChange, sharedOnChange, editor]);
+            if (onChange) {
+                // onChange is only called for this current editor instance, allowing for
+                // per-editor onChange handlers
+                const json = editorState.toJSON();
+                onChange(json);
+            }
+        },
+        [onChange, sharedOnChange, editor],
+    );
 
     const onWrapperRef = (wrapperElem) => {
         if (!isNested) {
@@ -91,37 +100,73 @@ const KoenigComposableEditor = ({
     };
 
     return (
-        <div
-            ref={onWrapperRef}
-            className={`koenig-lexical ${inheritStyles ? 'kg-inherit-styles' : ''} ${darkMode ? 'dark' : ''} ${className}`}
-            data-koenig-dnd-disabled={!isDragEnabled}
-            data-testid={dataTestId}
-        >
-            <RichTextPlugin
-                contentEditable={
-                    <div ref={onContentEditableRef} data-kg="editor">
-                        <ContentEditable className="kg-prose" readOnly={readOnly} />
-                    </div>
-                }
-                ErrorBoundary={KoenigErrorBoundary}
-                placeholder={placeholder || <EditorPlaceholder className={placeholderClassName} text={placeholderText} />}
-            />
-            <LinkPlugin />
-            <OnChangePlugin ignoreHistoryMergeTagChange={false} ignoreSelectionChange={true} onChange={_onChange} />
-            {!isCollabActive && <HistoryPlugin externalHistoryState={historyState} />} {/* adds undo/redo, in multiplayer that's handled by yjs */}
-            <KoenigBehaviourPlugin containerElem={editorContainerRef} cursorDidExitAtTop={cursorDidExitAtTop} isNested={isNested} />
-            <MarkdownShortcutPlugin transformers={markdownTransformers} />
-            {floatingAnchorElem && (<FloatingToolbarPlugin anchorElem={floatingAnchorElem} hiddenFormats={hiddenFormats} isSnippetsEnabled={isSnippetsEnabled} />)}
-            <DragDropPastePlugin />
-            {registerAPI ? <ExternalControlPlugin registerAPI={registerAPI} /> : null}
-            {isDragReorderEnabled && <DragDropReorderPlugin containerElem={editorContainerRef} />}
-            {singleParagraph && <RestrictContentPlugin paragraphs={1} />}
-            {onBlur && <KoenigBlurPlugin onBlur={onBlur} />}
-            {onFocus && <KoenigFocusPlugin onFocus={onFocus} />}
-            <MarkdownPastePlugin />
-            {isTKEnabled && <TKPlugin />}
-            {children}
-        </div>
+        <>
+            {isShowNavToolbar && <NavToolbar editor={editor} />}
+            <div
+                ref={onWrapperRef}
+                className={`koenig-lexical ${
+                    inheritStyles ? 'kg-inherit-styles' : ''
+                } ${darkMode ? 'dark' : ''} ${className}`}
+                data-koenig-dnd-disabled={!isDragEnabled}
+                data-testid={dataTestId}
+            >
+                <RichTextPlugin
+                    contentEditable={
+                        <div ref={onContentEditableRef} data-kg="editor">
+                            <ContentEditable
+                                className="kg-prose"
+                                readOnly={readOnly}
+                            />
+                        </div>
+                    }
+                    ErrorBoundary={KoenigErrorBoundary}
+                    placeholder={
+                        placeholder || (
+                            <EditorPlaceholder
+                                className={placeholderClassName}
+                                text={placeholderText}
+                            />
+                        )
+                    }
+                />
+                <LinkPlugin />
+                <OnChangePlugin
+                    ignoreHistoryMergeTagChange={false}
+                    ignoreSelectionChange={true}
+                    onChange={_onChange}
+                />
+                {!isCollabActive && (
+                    <HistoryPlugin externalHistoryState={historyState} />
+                )}{' '}
+                {/* adds undo/redo, in multiplayer that's handled by yjs */}
+                <KoenigBehaviourPlugin
+                    containerElem={editorContainerRef}
+                    cursorDidExitAtTop={cursorDidExitAtTop}
+                    isNested={isNested}
+                />
+                <MarkdownShortcutPlugin transformers={markdownTransformers} />
+                {floatingAnchorElem && (
+                    <FloatingToolbarPlugin
+                        anchorElem={floatingAnchorElem}
+                        hiddenFormats={hiddenFormats}
+                        isSnippetsEnabled={isSnippetsEnabled}
+                    />
+                )}
+                <DragDropPastePlugin />
+                {registerAPI ? (
+                    <ExternalControlPlugin registerAPI={registerAPI} />
+                ) : null}
+                {isDragReorderEnabled && (
+                    <DragDropReorderPlugin containerElem={editorContainerRef} />
+                )}
+                {singleParagraph && <RestrictContentPlugin paragraphs={1} />}
+                {onBlur && <KoenigBlurPlugin onBlur={onBlur} />}
+                {onFocus && <KoenigFocusPlugin onFocus={onFocus} />}
+                <MarkdownPastePlugin />
+                {isTKEnabled && <TKPlugin />}
+                {children}
+            </div>
+        </>
     );
 };
 
