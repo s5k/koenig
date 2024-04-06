@@ -104,7 +104,7 @@ const KoenigComposableEditor = ({
             {isShowNavToolbar && <NavToolbar editor={editor} />}
             <div
                 ref={onWrapperRef}
-                className={`${
+                className={`relative ${
                     inheritStyles ? 'kg-inherit-styles' : ''
                 } ${darkMode ? 'dark' : ''} ${className}`}
                 data-koenig-dnd-disabled={!isDragEnabled}
