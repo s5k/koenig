@@ -100,11 +100,11 @@ const KoenigComposableEditor = ({
     };
 
     return (
-        <>
+        <div className='koenig-lexical'>
             {isShowNavToolbar && <NavToolbar editor={editor} />}
             <div
                 ref={onWrapperRef}
-                className={`koenig-lexical ${
+                className={`${
                     inheritStyles ? 'kg-inherit-styles' : ''
                 } ${darkMode ? 'dark' : ''} ${className}`}
                 data-koenig-dnd-disabled={!isDragEnabled}
@@ -166,7 +166,7 @@ const KoenigComposableEditor = ({
                 {isTKEnabled && <TKPlugin />}
                 {children}
             </div>
-        </>
+        </div>
     );
 };
 
