@@ -74,6 +74,7 @@ function DemoEditor({editorType, registerAPI, cursorDidExitAtTop, darkMode, setW
         return (
             <KoenigComposableEditor
                 cursorDidExitAtTop={cursorDidExitAtTop}
+                isSnippetsEnabled={false}
                 markdownTransformers={BASIC_TRANSFORMERS}
                 registerAPI={registerAPI}
                 isShowNavToolbar

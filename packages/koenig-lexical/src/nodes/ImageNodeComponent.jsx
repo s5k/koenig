@@ -10,6 +10,7 @@ import {ActionToolbar} from '../components/ui/ActionToolbar';
 import {ImageCard} from '../components/ui/cards/ImageCard';
 import {ImageUploadForm} from '../components/ui/ImageUploadForm';
 import {LinkInput} from '../components/ui/LinkInput';
+import {LinkNode} from '@lexical/link';
 import {SnippetActionToolbar} from '../components/ui/SnippetActionToolbar';
 import {ToolbarMenu, ToolbarMenuItem, ToolbarMenuSeparator} from '../components/ui/ToolbarMenu';
 import {dataSrcToFile} from '../utils/dataSrcToFile.js';
@@ -224,7 +225,7 @@ export function ImageNodeComponent({nodeKey, initialFile, src, altText, captionE
                     onFileChange={onFileChange}
                 />
                 <ToolbarMenu>
-                    <ToolbarMenuItem
+                    {/* <ToolbarMenuItem
                         hide={isGif(src)}
                         icon="imgRegular"
                         isActive={cardWidth === 'regular'}
@@ -244,11 +245,16 @@ export function ImageNodeComponent({nodeKey, initialFile, src, altText, captionE
                         isActive={cardWidth === 'full'}
                         label="Full"
                         onClick={() => handleImageCardResize('full')}
-                    />
-                    <ToolbarMenuSeparator hide={isGif(src)} />
-                    <ToolbarMenuItem icon="link" isActive={href || false} label="Link" onClick = {() => {
-                        setShowLink(true);
-                    }} />
+                    /> */}
+                    {
+                        editor.hasNode(LinkNode) && (
+                            <>
+                                <ToolbarMenuItem icon="link" isActive={href || false} label="Link" onClick = {() => {
+                                    setShowLink(true);
+                                }} />
+                            </>
+                        )
+                    }
                     <ToolbarMenuItem
                         hide={isGif(src)}
                         icon="imgReplace"

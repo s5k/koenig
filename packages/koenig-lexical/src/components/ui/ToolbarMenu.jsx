@@ -14,10 +14,12 @@ import QuoteOneIcon from '../../assets/icons/kg-quote-1.svg?react';
 import QuoteTwoIcon from '../../assets/icons/kg-quote-2.svg?react';
 import SnippetIcon from '../../assets/icons/kg-snippet.svg?react';
 import TrashIcon from '../../assets/icons/kg-trash.svg?react';
+import UnderLineIcon from '../../assets/icons/kg-underline.svg?react';
 
 export const TOOLBAR_ICONS = {
     bold: BoldIcon,
     italic: ItalicIcon,
+    underline: UnderLineIcon,
     headingOne: HeadingOneIcon,
     headingTwo: HeadingTwoIcon,
     quote: QuoteIcon,

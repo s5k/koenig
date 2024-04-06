@@ -121,27 +121,6 @@
             "version": 1
           },
           {
-            "children": [
-              {
-                "detail": 0,
-                "format": 0,
-                "mode": "normal",
-                "style": "",
-                "text": "ghost.org/changelog/markdown/",
-                "type": "text",
-                "version": 1
-              }
-            ],
-            "direction": "ltr",
-            "format": "",
-            "indent": 0,
-            "type": "link",
-            "version": 1,
-            "rel": null,
-            "target": null,
-            "url": "https://ghost.org/changelog/markdown/"
-          },
-          {
             "detail": 0,
             "format": 0,
             "mode": "normal",

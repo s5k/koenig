@@ -15,6 +15,7 @@ import {$getNearestNodeOfType} from '@lexical/utils';
 import {$isListNode, ListNode} from '@lexical/list';
 import {$setBlocksType} from '@lexical/selection';
 import {HeadingNode, QuoteNode} from '@lexical/rich-text';
+import {LinkNode} from '@lexical/link';
 import {
     ToolbarMenu,
     ToolbarMenuItem,
@@ -60,6 +61,7 @@ export default function FormatToolbar({
 }) {
     const [isBold, setIsBold] = React.useState(false);
     const [isItalic, setIsItalic] = React.useState(false);
+    const [isUnderline, setIsUnderline] = React.useState(false);
     const [blockType, setBlockType] = React.useState('paragraph');
 
     let hideHeading = false;
@@ -96,6 +98,7 @@ export default function FormatToolbar({
             // update text format
             setIsBold(selection.hasFormat('bold'));
             setIsItalic(selection.hasFormat('italic'));
+            setIsUnderline(selection.hasFormat('underline'));
 
             const anchorNode = getSelectedNode(selection);
             const element = anchorNode.getKey() === 'root'
@@ -190,6 +193,14 @@ export default function FormatToolbar({
                 onClick={() => editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'italic')}
             />
             <ToolbarMenuItem
+                data-kg-toolbar-button="underline"
+                icon="underline"
+                isActive={isUnderline}
+                label="Format text as underline"
+                onClick={() => editor.dispatchCommand(FORMAT_TEXT_COMMAND, 'underline')}
+            />
+
+            <ToolbarMenuItem
                 data-kg-toolbar-button="h2"
                 hide={hideHeading}
                 icon="headingOne"
@@ -215,13 +226,17 @@ export default function FormatToolbar({
                 onClick={formatQuote}
             />
 
-            <ToolbarMenuItem
-                data-kg-toolbar-button="link"
-                icon="link"
-                isActive={!!isLinkSelected}
-                label="Link"
-                onClick={onLinkClick}
-            />
+            {
+                editor.hasNode(LinkNode) && (
+                    <ToolbarMenuItem
+                        data-kg-toolbar-button="link"
+                        icon="link"
+                        isActive={!!isLinkSelected}
+                        label="Link"
+                        onClick={onLinkClick}
+                    />
+                )
+            }
 
             <ToolbarMenuSeparator hide={hideSnippets} />
             <ToolbarMenuItem
