@@ -1,9 +1,20 @@
 import ImageCardIcon from '../assets/icons/kg-card-type-image.svg';
 import React from 'react';
+import {$getRoot, $getSelection} from 'lexical';
 import {FORMAT_TEXT_COMMAND} from 'lexical';
 import {INSERT_IMAGE_COMMAND} from '../nodes/ImageNode';
 
 export default function NavToolbar({editor}) {
+    const insertImageBlock = () => {
+        editor.update(() => {
+            const selection = $getSelection();
+            if (!selection) {
+                $getRoot().selectEnd();
+            }
+            editor.dispatchCommand(INSERT_IMAGE_COMMAND, {});
+        });
+    };
+
     return (
         <ul className="mb-5 flex space-x-2">
             <li
@@ -29,7 +40,7 @@ export default function NavToolbar({editor}) {
             </li>
             <li
                 className="border-gray-300 text-500 flex w-[35px] cursor-pointer items-center justify-center rounded-md border p-2  py-1 hover:border-blue-500 hover:bg-blue-100 "
-                onClick={() => editor.dispatchCommand(INSERT_IMAGE_COMMAND, {})}
+                onClick={insertImageBlock}
             >
                 <img
                     alt="Image"
