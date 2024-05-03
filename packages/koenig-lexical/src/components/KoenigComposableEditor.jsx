@@ -77,8 +77,11 @@ const KoenigComposableEditor = ({
             if (onChange) {
                 // onChange is only called for this current editor instance, allowing for
                 // per-editor onChange handlers
-                const json = editorState.toJSON();
-                onChange(json);
+                editor.update(() => {
+                    const json = editorState.toJSON();
+                    const html = $generateHtmlFromNodes(editor, null);
+                    onChange(json, html);
+                });
             }
         },
         [onChange, sharedOnChange, editor],
