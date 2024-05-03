@@ -1,3 +1,6 @@
+/* External Dependencies */
+import {ListPlugin} from '@lexical/react/LexicalListPlugin';
+
 /* Components */
 import DesignSandbox from './components/DesignSandbox';
 import KoenigCardWrapper from './components/KoenigCardWrapper';
@@ -56,6 +59,8 @@ import {
 export * from './utils';
 
 export {
+    ListPlugin,
+
     DesignSandbox,
     KoenigComposableEditor,
     KoenigComposer,
