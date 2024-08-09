@@ -17,7 +17,7 @@ import {ExternalControlPlugin} from '../plugins/ExternalControlPlugin';
 import {HistoryPlugin} from '@lexical/react/LexicalHistoryPlugin';
 import {KoenigBlurPlugin} from '../plugins/KoenigBlurPlugin';
 import {KoenigFocusPlugin} from '../plugins/KoenigFocusPlugin';
-// import {LinkPlugin} from '@lexical/react/LexicalLinkPlugin';
+import {LinkPlugin} from '@lexical/react/LexicalLinkPlugin';
 import {OnChangePlugin} from '@lexical/react/LexicalOnChangePlugin';
 import {RestrictContentPlugin} from '../index.js';
 import {RichTextPlugin} from '@lexical/react/LexicalRichTextPlugin';
@@ -132,7 +132,7 @@ const KoenigComposableEditor = ({
                         )
                     }
                 />
-                {/* <LinkPlugin /> */}
+                <LinkPlugin />
                 <OnChangePlugin
                     ignoreHistoryMergeTagChange={false}
                     ignoreSelectionChange={true}
