@@ -88,8 +88,8 @@ export class MentionNode extends TextNode {
     }
 }
 
-export function $createMentionNode(mentionName) {
-    const mentionNode = new MentionNode(mentionName);
+export function $createMentionNode(uuid, mentionName) {
+    const mentionNode = new MentionNode(uuid, mentionName);
     mentionNode.setMode('segmented').toggleDirectionless();
     return $applyNodeReplacement(mentionNode);
 }

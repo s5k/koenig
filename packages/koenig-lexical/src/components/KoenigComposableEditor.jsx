@@ -46,7 +46,11 @@ const KoenigComposableEditor = ({
     isSnippetsEnabled = true,
     isShowNavToolbar = false,
     hiddenFormats = [],
-    dataTestId
+    dataTestId,
+    onMentionSearch,
+    onMentionSelect,
+    onMentionRemove,
+    mentionData
 }) => {
     const {historyState} = useSharedHistoryContext();
     const [editor] = useLexicalComposerContext();
@@ -133,7 +137,12 @@ const KoenigComposableEditor = ({
                         )
                     }
                 />
-                <MentionsPlugin />
+                <MentionsPlugin
+                    data={mentionData}
+                    onRemove={onMentionRemove}
+                    onSearch={onMentionSearch}
+                    onSelect={onMentionSelect}
+                />
                 <LinkPlugin />
                 <OnChangePlugin
                     ignoreHistoryMergeTagChange={false}

@@ -33,21 +33,6 @@
 
     --kg-breakout-adjustment: 0px;
 }
-body {
-    margin: 0;
-    background: #eee;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, ".SFNSText-Regular",
-    sans-serif;
-    font-weight: 500;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-.App {
-    font-family: sans-serif;
-    text-align: center;
-    padding: 0 5%;
-}
 
 .editor-container {
     background: #fff;

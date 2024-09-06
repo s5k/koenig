@@ -69,15 +69,19 @@ function getAllowedNodes({editorType}) {
     return undefined;
 }
 
-function DemoEditor({editorType, registerAPI, cursorDidExitAtTop, darkMode, setWordCount, setTKCount}) {
+function DemoEditor({editorType, registerAPI, cursorDidExitAtTop, darkMode, setWordCount, setTKCount, onMentionSearch, onMentionSelect, onMentionRemove, mentionData}) {
     if (editorType === 'basic') {
         return (
             <KoenigComposableEditor
                 cursorDidExitAtTop={cursorDidExitAtTop}
                 isSnippetsEnabled={false}
                 markdownTransformers={BASIC_TRANSFORMERS}
+                mentionData={mentionData}
                 registerAPI={registerAPI}
                 isShowNavToolbar
+                onMentionRemove={onMentionRemove}
+                onMentionSearch={onMentionSearch}
+                onMentionSelect={onMentionSelect}
             >
                 <ImagePlugin />
                 <WordCountPlugin onChange={setWordCount} />
