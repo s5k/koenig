@@ -28,6 +28,7 @@ import {ImageNode} from './ImageNode';
 import {LinkNode} from '@lexical/link';
 import {ListItemNode, ListNode} from '@lexical/list';
 import {MarkdownNode} from './MarkdownNode';
+import {MentionNode} from './MentionNode.js';
 import {PaywallNode} from './PaywallNode';
 import {ProductNode} from './ProductNode';
 import {SignupNode} from './SignupNode';
@@ -68,7 +69,8 @@ const DEFAULT_NODES = [
     GalleryNode,
     SignupNode,
     CollectionNode,
-    TKNode
+    TKNode,
+    MentionNode
 ];
 
 export default DEFAULT_NODES;

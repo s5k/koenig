@@ -7,6 +7,7 @@ import KoenigComposerContext from '../context/KoenigComposerContext';
 import KoenigErrorBoundary from './KoenigErrorBoundary';
 import MarkdownPastePlugin from '../plugins/MarkdownPastePlugin.jsx';
 // import MarkdownShortcutPlugin from '../plugins/MarkdownShortcutPlugin';
+import MentionsPlugin from '../plugins/MentionPlugin.jsx';
 import NavToolbar from './NavToolbar.jsx';
 import React from 'react';
 import TKPlugin from '../plugins/TKPlugin.jsx';
@@ -132,6 +133,7 @@ const KoenigComposableEditor = ({
                         )
                     }
                 />
+                <MentionsPlugin />
                 <LinkPlugin />
                 <OnChangePlugin
                     ignoreHistoryMergeTagChange={false}
