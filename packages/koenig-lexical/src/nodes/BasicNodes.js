@@ -1,6 +1,7 @@
 import {ImageNode} from './ImageNode';
 import {LinkNode} from '@lexical/link';
 import {ListItemNode, ListNode} from '@lexical/list';
+import {MentionNode} from './MentionNode.js';
 import {TKNode} from '@tryghost/kg-default-nodes';
 
 const BASIC_NODES = [
@@ -8,7 +9,8 @@ const BASIC_NODES = [
     ListItemNode,
     TKNode,
     ImageNode,
-    LinkNode
+    LinkNode,
+    MentionNode
 ];
 
 export default BASIC_NODES;
