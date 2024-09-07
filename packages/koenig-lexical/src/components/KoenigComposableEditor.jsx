@@ -30,7 +30,6 @@ import {useSharedOnChangeContext} from '../context/SharedOnChangeContext';
 
 const KoenigComposableEditor = ({
     onChange,
-    onClear,
     onBlur,
     onFocus,
     markdownTransformers,
@@ -68,6 +67,11 @@ const KoenigComposableEditor = ({
     const handleClear = () => {
         $getRoot().clear();
     };
+
+    useImperativeHandle(ref, () => ({
+        clear: () => handleClear()
+    }));
+
     const _onChange = React.useCallback(
         (editorState, editor) => {
             if (sharedOnChange) {
@@ -92,10 +96,6 @@ const KoenigComposableEditor = ({
                     const html = $generateHtmlFromNodes(editor, null);
                     onChange(json, html);
                 });
-            }
-
-            if (onClear) {
-                handleClear();
             }
         },
         [onChange, sharedOnChange, editor],
