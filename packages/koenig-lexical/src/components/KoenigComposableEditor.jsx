@@ -12,6 +12,7 @@ import NavToolbar from './NavToolbar.jsx';
 import React, {useImperativeHandle} from 'react';
 import TKPlugin from '../plugins/TKPlugin.jsx';
 import {$generateHtmlFromNodes} from '@lexical/html';
+import {$getRoot} from 'lexical';
 import {ContentEditable} from '@lexical/react/LexicalContentEditable';
 import {EditorPlaceholder} from './ui/EditorPlaceholder';
 import {ExternalControlPlugin} from '../plugins/ExternalControlPlugin';
@@ -29,6 +30,7 @@ import {useSharedOnChangeContext} from '../context/SharedOnChangeContext';
 
 const KoenigComposableEditor = ({
     onChange,
+    onClear,
     onBlur,
     onFocus,
     markdownTransformers,
@@ -63,6 +65,9 @@ const KoenigComposableEditor = ({
     const isDragReorderEnabled = isDragEnabled && !readOnly && !isNested;
 
     const {onChange: sharedOnChange} = useSharedOnChangeContext();
+    const handleClear = () => {
+        $getRoot().clear();
+    };
     const _onChange = React.useCallback(
         (editorState, editor) => {
             if (sharedOnChange) {
@@ -88,6 +93,10 @@ const KoenigComposableEditor = ({
                     onChange(json, html);
                 });
             }
+
+            if (onClear) {
+                handleClear();
+            }
         },
         [onChange, sharedOnChange, editor],
     );
@@ -106,16 +115,6 @@ const KoenigComposableEditor = ({
             setFloatingAnchorElem(_floatingAnchorElem);
         }
     };
-
-    const handleClear = () => {
-        editor.update(() => {
-            editor.getRoot().clear();
-        });
-    };
-
-    useImperativeHandle(ref, () => ({
-        clear: handleClear
-    }));
 
     return (
         <div ref={ref} className='koenig-lexical'>
