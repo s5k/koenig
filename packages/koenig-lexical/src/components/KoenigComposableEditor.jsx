@@ -9,7 +9,7 @@ import MarkdownPastePlugin from '../plugins/MarkdownPastePlugin.jsx';
 // import MarkdownShortcutPlugin from '../plugins/MarkdownShortcutPlugin';
 import MentionsPlugin from '../plugins/MentionPlugin.jsx';
 import NavToolbar from './NavToolbar.jsx';
-import React from 'react';
+import React, {useImperativeHandle} from 'react';
 import TKPlugin from '../plugins/TKPlugin.jsx';
 import {$generateHtmlFromNodes} from '@lexical/html';
 import {ContentEditable} from '@lexical/react/LexicalContentEditable';
@@ -51,7 +51,7 @@ const KoenigComposableEditor = ({
     onMentionSelect,
     onMentionRemove,
     mentionData
-}) => {
+}, ref) => {
     const {historyState} = useSharedHistoryContext();
     const [editor] = useLexicalComposerContext();
     const {isCollabActive} = useCollaborationContext();
@@ -107,8 +107,18 @@ const KoenigComposableEditor = ({
         }
     };
 
+    const handleClear = () => {
+        editor.update(() => {
+            editor.getRoot().clear();
+        });
+    };
+
+    useImperativeHandle(ref, () => ({
+        clear: handleClear
+    }));
+
     return (
-        <div className='koenig-lexical'>
+        <div ref={ref} className='koenig-lexical'>
             {isShowNavToolbar && <NavToolbar editor={editor} />}
             <div
                 ref={onWrapperRef}
@@ -184,4 +194,4 @@ const KoenigComposableEditor = ({
     );
 };
 
-export default KoenigComposableEditor;
+export default React.forwardRef(KoenigComposableEditor);
