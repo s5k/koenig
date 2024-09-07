@@ -64,8 +64,11 @@ const KoenigComposableEditor = ({
     const isDragReorderEnabled = isDragEnabled && !readOnly && !isNested;
 
     const {onChange: sharedOnChange} = useSharedOnChangeContext();
+
     const handleClear = () => {
-        $getRoot().clear();
+        editor.update(() => {
+            $getRoot().clear();
+        });
     };
 
     useImperativeHandle(ref, () => ({
